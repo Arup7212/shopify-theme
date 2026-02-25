@@ -1,0 +1,89 @@
+<style>
+    .shop-categories ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .shop-categories li {
+    margin: 0 10px;
+  }
+
+  .category-button {
+    background-color: #D32F2F;
+    color: white;
+    padding: 15px 30px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+
+  .category-button:hover {
+    background-color: #B71C1C;
+  }
+
+
+   /* Medium devices (tablets, 768px and up) */
+    @media (max-width: 767px){
+       .shop-categories ul {
+    display: grid;
+    justify-content: center;
+    list-style-type: none;
+    padding: 0;
+    column-count: 2;
+    gap: 32px;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    padding-left: unset;
+                   }
+    }
+  .shop-categories li{
+    width: fit-content;
+  }
+</style>
+
+<div class="shop-categories">
+  <ul>
+    {% for block in section.blocks %}
+      <li>
+        <a href="{{ block.settings.category_link }}" class="category-button">{{ block.settings.category_name }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+</div>
+{% schema %}
+{
+  "name": "Shop Categories",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "Category Name",
+          "default": "Category"
+        },
+        {
+          "type": "url",
+          "id": "category_link",
+          "label": "Category Link",
+          "default": "/collections/all"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop Categories",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,168 @@
+
+{%- style -%}
+  .newsletter-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    height: 415px;
+  }
+
+  .newsletter-banner .newsletter-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .newsletter-banner .newsletter-subheading {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: black;
+  }
+
+  .newsletter-banner .newsletter-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .newsletter-banner .newsletter-form input {
+    max-width: 300px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+
+  .newsletter-banner .newsletter-form input::placeholder {
+    font-size: 18px;
+  }
+
+  .newsletter-banner .newsletter-form button {
+    background-color: #000;
+    color: #fff;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .newsletter-banner .newsletter-form button:hover {
+    background-color: #444;
+  }
+
+  .newsletter-banner .container {
+    max-width: 900px;
+    margin: auto;
+  }
+
+  .newsletter-banner .container h2 {
+    color: #fff;
+    font-size: 40px;
+    margin-top: 0px;
+  }
+
+  .newsletter-banner .container p {
+    color: #fff;
+    font-size: 18px;
+  }
+
+  .newsletter-banner .container .newsletter-form {
+    flex-direction: row;
+    max-width: 100%;
+  }
+
+  .newsletter-banner .container .newsletter-form button {
+    font-size: 18px;
+  }
+
+  #_builder-form input[type=tel],
+  #_builder-form input[type=email],
+  #_builder-form .multiselect .multiselect__tags {
+    background-color: #fdfcfd !important;
+  }
+
+  /* Desktop Background */
+  @media (min-width: 768px) {
+    .newsletter-banner {
+      background-image: url({{ section.settings.desktop_banner | img_url: 'master' }});
+    }
+  }
+
+  /* Mobile Background */
+  @media (max-width: 767px) {
+    .newsletter-banner {
+      background-image: url({{ section.settings.mobile_banner | img_url: 'master' }});
+    }
+  }
+{%- endstyle -%}
+
+<div class="newsletter-banner">
+  <div class="container">
+    <h2 class="newsletter-heading">{{ section.settings.custom_title }}</h2>
+    <p class="newsletter-subheading">{{ section.settings.custom_description }}</p>
+    <iframe
+      src="https://link.optimize.net/widget/form/dPTuGJoURrSArQXbN0kp"
+      style="width:100%;height:100%;border:none; color:red;border-radius:0px"
+      id="inline-dPTuGJoURrSArQXbN0kp"
+      data-layout="{'id':'INLINE'}"
+      data-trigger-type="alwaysShow"
+      data-trigger-value=""
+      data-activation-type="alwaysActivated"
+      data-activation-value=""
+      data-deactivation-type="neverDeactivate"
+      data-deactivation-value=""
+      data-form-name="S0.2. Newsletter Footer Form"
+      data-height="400"
+      data-layout-iframe-id="inline-dPTuGJoURrSArQXbN0kp"
+      data-form-id="dPTuGJoURrSArQXbN0kp"
+      title="S0.2. Newsletter Footer Form"
+    >
+    </iframe>
+    <script src="https://link.optimize.net/js/form_embed.js"></script>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Newsletter Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_banner",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_banner",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Title",
+      "default": "Stay in the Loop for Exclusive Golf Deals!"
+    },
+    {
+      "type": "textarea",
+      "id": "custom_description",
+      "label": "Description",
+      "default": "Sign up today for access to exclusive discounts, product updates, and golf-buying tips. Stay ahead with insider knowledge and the best deals on top golf equipment and accessories!"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Section"
+    }
+  ]
+}
+{% endschema %}

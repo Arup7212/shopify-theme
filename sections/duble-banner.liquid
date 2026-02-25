@@ -1,0 +1,67 @@
+<div class="banner-container">
+  {% for block in section.blocks %}
+    <div class="banner-item">
+      {% if block.settings.banner_image %}
+        <a href="{{ block.settings.image-link}}">
+          <img src="{{ block.settings.banner_image |img_url: '1349x700' }}" alt="{{ block.settings.product_title }}">
+        </a>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Custom Banners",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "banner",
+      "name": "Banner",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "banner_image",
+          "label": "Banner Image"
+        },
+        {
+          "type": "url",
+          "id": "image-link",
+          "label": "link-imaage"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banners",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+  .banner-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .banner-item {
+    flex: 1 1 calc(50% - 11px);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .banner-item {
+      flex: 1 1 100%;
+    }
+  }
+</style>
